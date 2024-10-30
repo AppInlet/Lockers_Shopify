@@ -138,7 +138,7 @@ If **Enable PUDO Locker Confirmation** is checked, go to **Settings** -> **Check
 
 #### 10.5 Order Confirmation Email Template [🔼](#table-of-contents)
 
-If **Enable PUDO Locker Confirmation** is checked, select the Order Confirmation Email template -> edit code and paste the code from below the shipping info table (+-line 854 in the unedited template). Save your changes.
+If **Enable PUDO Locker Confirmation** is checked, select **Notifications** -> **Customer notifications** -> **Order Confirmation** -> **Edit Code** and paste the code from below the shipping info table (+-line 854 in the unedited template). Save your changes.
 
 ````
     {% if shipping_method and shipping_method.handle contains 'PUDO' and shipping_method.handle contains 'Locker' %}
