@@ -20,7 +20,7 @@
         * [10.1 Shipping Address Phone Number](#101-shipping-address-phone-number-)
         * [10.2 Shipping Address Email](#102-shipping-address-email-)
         * [10.3 Flat-Rate Shipping Methods](#103-flat-rate-shipping-methods-)
-        * [10.4 Locker Confirmation Post-Purchase](#104-locker-confirmation-post-purchase-page-)
+        * [10.4 Locker Confirmation Post-Purchase](#104-locker-confirmation-post-purchase-)
 * [Testing the Configuration](#testing-the-configuration-)
     * [1. Prime Checkout](#1-prime-checkout-)
     * [2. Select TCG Lockers Method](#2-select-tcg-lockers-method-)
