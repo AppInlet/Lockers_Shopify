@@ -21,6 +21,7 @@
         * [10.2 Shipping Address Email](#102-shipping-address-email-)
         * [10.3 Flat-Rate Shipping Methods](#103-flat-rate-shipping-methods-)
         * [10.4 Locker Confirmation Thank You Page](#104-locker-confirmation-thank-you-page-)
+        * [10.5 Order Confirmation Email Template](#105-order-confirmation-email-template-)
 * [Testing the Configuration](#testing-the-configuration-)
     * [1. Prime Checkout](#1-prime-checkout-)
     * [2. Select TCG Locker Method](#2-select-tcg-locker-method-)
@@ -137,6 +138,39 @@ Navigate to **Settings** → **Checkout** → **Customize** to configure the Tha
 **checkout-locker-select** block under **Apps** to allow customers to select their locker destination after purchase.
 
 > ![TCG Locker Guide](/assets/tcg-locker/10-4-locker-confirmation-thank-you.png)
+
+
+#### 10.5 Order Confirmation Email Template [🔼](#table-of-contents)
+
+
+
+If **Enable The Courier Guy Locker confirmation** is checked, go to **Settings** → **Notifications** → **Customer notifications** → **Order Confirmation** → **Edit Code**.
+
+Paste the following code below the shipping info table (approximately line 3500, after the `</table>` in the unedited template), then save your changes:
+
+```liquid
+{% if shipping_method and shipping_method.title | downcase contains 'locker' %}
+    {% assign shopName = shop.domain %}
+    {% assign orderID = order.id %}
+    {% capture locker_url %}
+        https://shp.pudo.co.za/otp_confirmation?shop={{ shopName }}&orderID={{ orderID }}
+    {% endcapture %}
+    <p style="margin:16px 0; font-size:16px;">
+        Please select your locker destination here:
+        <a href="{{ locker_url }}" style="color:#1a73e8; text-decoration:underline;">Click to choose locker</a>
+    </p>
+    <p style="color:#888; font-size:14px;">
+        If the link does not work, copy and paste this URL into your browser:<br>
+        {{ locker_url }}
+    </p>
+{% endif %}
+```
+> ![TCG Locker Guide](/assets/tcg-locker/10-5-adding-code-to-order-confirmation-template.png)
+
+Your order confirmation email should now contain the newly added code:
+
+> ![TCG Locker Guide](/assets/tcg-locker/10-5-example-email-with-locker-confirmation.png)
+
 
 ## Testing the Configuration [🔼](#table-of-contents)
 
